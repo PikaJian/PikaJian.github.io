@@ -99,11 +99,8 @@ body {
 }
 
 .navbar-default {
-   z-index: 1030;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;  
+  background-color: #000;
+  margin-top: -40px;
   background-image: -webkit-linear-gradient(top, #fff 0%, #f8f8f8 100%);
   background-image:      -o-linear-gradient(top, #fff 0%, #f8f8f8 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f8f8f8));
