@@ -1,14 +1,5 @@
-$(document).mousedown(function(e){
-   // Left mouse button was pressed, set flag
-   if(e.which == 3) rightButtonDown = true;
-   if(rightButtonDown)
-      {
-         //$.alert("aaa.");
-         $.msgbox("The selection");
-      }
-});
-
 $(document).ready(function() {
+
 
    function blockMenu(Evt){//disable 右鍵menu
       // window.event 是IE才有的物件
@@ -19,6 +10,39 @@ $(document).ready(function() {
          Evt.preventDefault();//取消DOM預設事件
    }
    document.oncontextmenu = blockMenu; 
+  var rightButtonDown =false;
+  var rightButtonUp =false;
+  var mouse_press_timestamp=0;
+$(window).mousedown(function(e){
+   // Left mouse button was pressed, set flag
+   if(rightButtonDown) return;
+   if(e.which == 3) {
+      rightButtonDown = true;
+      mouse_press_timestamp = new Date().getTime();
+   }
+});
+$(window).mouseup(function(e){
+   // Left mouse button was pressed, set flag
+   if(rightButtonUp) return;
+   if(rightButtonDown){
+      if(e.which == 3){
+         var timediff = new Date().getTime() - mouse_press_timestamp;
+         if(timediff < 500)
+         {
+               rightButtonUp = true;
+               $.alert("你想做甚麼!!",function()
+               {
+                  rightButtonUp =false;
+                  rightButtonDown = false;
+               });
+         }
+         else
+            rightButtonDown =false;
+
+      }
+   }
+});
+
    $(window).scroll(function(){  //只要窗口滚动,就触发下面代码 
       var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
       if( scrollt >200 ){  //判断滚动后高度超过200px,就显示
