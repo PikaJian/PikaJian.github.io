@@ -42,6 +42,7 @@ body {
   -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.75);
   -moz-box-shadow: 0 2px 102px rgba(0,0,0,.75);
   box-shadow: 0 2px 10px rgba(0,0,0,.75);
+
 }
 
 #sidebar {
@@ -403,7 +404,7 @@ h4 {
 }
 
 .page h3.title a {
-  color: black;
+  color: white;
 }
 
 .page h3.title span.date {
