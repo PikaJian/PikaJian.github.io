@@ -99,7 +99,7 @@ body {
 }
 
 .navbar-default {
-
+   z-index: 1030;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border-top-left-radius: 6px;
