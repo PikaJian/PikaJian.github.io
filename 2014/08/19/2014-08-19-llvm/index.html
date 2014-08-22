@@ -3,17 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>編譯llvm+clang+libc++教學 | Hexo</title>
+  <title>編譯llvm+clang+libc++教學 | 皮卡之家</title>
   <meta name="author" content="簡皮卡">
   
-  <meta name="description" content="先下載原始碼安裝llvm+clang
-1234567891011mkdir llvm-clangcd ~/llvm-clangsvn co http://llvm.org/svn/llvm-project/llvm/trunk llvmcd llvm/toolscd ../..cd llvm/too">
+  <meta name="description" content="簡皮卡的程式園地">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="編譯llvm+clang+libc++教學"/>
-  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:site_name" content="皮卡之家"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -39,9 +38,26 @@
 </head>
 
  <body> 
-<div id="wrap">
-<header role="banner">
-  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+   <div class="main">
+  	<div class="content">
+    	 
+
+
+
+
+	
+		<div class="page-header">
+		<h1>簡皮卡的程式園地</h1>
+<div class="form-group has-success has-feedback">
+  <form action="getData" method="post" accept-charset="utf-8" >
+  <input type="text" name="name" class="form-control">
+  </form>
+</div>
+		</div>		
+  
+<nav class="navbar navbar-default" role="navigation">
+      
     <div class="container">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -50,51 +66,47 @@
          <span class="icon-bar"></span>
          </button>
       </div>
-	  <a class="navbar-brand" href="/">Hexo</a>
+	  <a class="navbar-brand" href="/">皮卡之家</a>
       <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 		  
 		  <li>
-			<a href="/archives" title="All the articles.">
+			<a href="/archives/" title="All the articles.">
 			  <i class="fa fa-archive"></i>Archives
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
+			<a href="/categories/" title="All the categories.">
 			  <i class="fa fa-folder"></i>Categories
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/tags" title="All the tags.">
+			<a href="/tags/" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/about" title="About me.">
+			<a href="/about/" title="About me.">
 			  <i class="fa fa-user"></i>About
 			</a>
 		  </li>
 		  
 		</ul>
       </div>
+
     </div> <!-- container -->
 </nav>
 <div class="clearfix"></div>
 
-</header>
-  <div class="container">
-  	<div class="content">
-    	 
-
 
 	
-		<div class="page-header">		
-			<h1> 編譯llvm+clang+libc++教學</h1>
-		</div>		
-	
+
+
+
+
 
 
 
@@ -111,7 +123,7 @@
 	    <p><font color="black">先下載原始碼安裝llvm+clang</font><br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mkdir llvm-clang</div><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm</div><div class="line"><span class="built_in">cd</span> llvm/tools</div><div class="line"><span class="built_in">cd</span> ../..</div><div class="line"><span class="built_in">cd</span> llvm/tools/clang/tools</div><div class="line">svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra</div><div class="line"><span class="built_in">cd</span> ../../../..</div><div class="line"><span class="built_in">cd</span> llvm/projects</div><div class="line">svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt</div><div class="line"><span class="built_in">cd</span> ..</div></pre></td></tr></table></figure>
 
-
+<p><a id="more"></a></p>
 <p><font color="black">Build llvm against libgcc/libstdc++</font><br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line">../llvm/configure --prefix=/ --enable-targets=host --disable-docs --enable-optimized</div><div class="line">make -j4 <span class="comment">#4cores</span></div><div class="line">make install</div></pre></td></tr></table></figure>
 
@@ -129,7 +141,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> llvm</div><div class="line">sed -i <span class="string">'/^  return ToolChain::CST_Libstdcxx/s@stdcxx@cxx@'</span> tools/clang/lib/Driver/ToolChain.cpp</div></pre></td></tr></table></figure>
 
 <p><font color="black">Build</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mkdir ../llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line">CC=clang CXX=<span class="string">"clang++ -stdlib=libc++"</span> ../llvm/configure --enable-targets=host </div><div class="line">--disable-docs --enable-optimized --enable-libcpp</div><div class="line">make -j4</div><div class="line">make install</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mkdir ../llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line"></div><div class="line">CC=clang CXX=<span class="string">"clang++ -stdlib=libc++"</span> ../llvm/configure --enable-targets=host </div><div class="line">--disable-docs --enable-optimized --enable-libcpp</div><div class="line">make -j4</div><div class="line">make install</div></pre></td></tr></table></figure>
 
 <p>這樣就編譯好了,預設是裝在/usr/local下<br>你想改可以在configure裡增加—prefix參數</p>
 	  
@@ -144,7 +156,7 @@
           <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
         
 
-        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+        <li><a href="/archives/"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
 		   <li class="next"><a href="/2014/08/19/2014-08-19-YouCompleteMe/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
@@ -217,8 +229,9 @@
 </div><!-- row -->
 
 	</div>
-  </div>
-  </div>
+
+  </div> <!-- main -->
+  </div> <!-- container -->
   <div class="container-narrow">
   <footer role="contentinfo"> <p>
   &copy; 2014 簡皮卡
@@ -236,7 +249,7 @@
 <script src="/js/gallery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="/js/tagcanvas.js"></script>
 
 
 

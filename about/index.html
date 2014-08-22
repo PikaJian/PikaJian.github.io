@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>C++測試 | 皮卡之家</title>
+  <title>about | 皮卡之家</title>
   <meta name="author" content="簡皮卡">
   
   <meta name="description" content="簡皮卡的程式園地">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="C++測試"/>
+  <meta property="og:title" content="about"/>
   <meta property="og:site_name" content="皮卡之家"/>
 
   
@@ -42,8 +42,6 @@
    <div class="main">
   	<div class="content">
     	 
-
-
 
 
 	
@@ -110,21 +108,17 @@
 
 
 
-<div class="row post">
+<div class="row page">
 	<!-- cols -->
 	
-	<div class="col-md-9">
+	<div class="col-md-12">
 	
 
 			
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>Hello World</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">SDL_Event event;</div><div class="line">     <span class="keyword">while</span> (!d.quit) {</div><div class="line">        SDL_WaitEvent(&amp;event);</div><div class="line">        <span class="keyword">switch</span> (event.type) {</div><div class="line">           <span class="keyword">case</span> SDL_MOUSEBUTTONDOWN:</div><div class="line">              <span class="keyword">if</span> (event.button.button == SDL_BUTTON_LEFT) <span class="built_in">printf</span>(<span class="string">"key press\n"</span>);</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">           <span class="keyword">case</span> SDL_QUIT:</div><div class="line">              <span class="built_in">printf</span>(<span class="string">"Have to Quit!!!\n"</span>);</div><div class="line">              timer_delete(timer.timerid);</div><div class="line">              d.quit = <span class="number">1</span>;</div><div class="line">              d.deinit();</div><div class="line">              pthread_mutex_lock(&amp;d.pictq_mutex);</div><div class="line">              pthread_cond_broadcast(&amp;d.pictq_cond);</div><div class="line">              pthread_mutex_unlock(&amp;d.pictq_mutex);</div><div class="line">              SDL_Quit();</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">           <span class="keyword">case</span> FF_REFRESH_EVENT:</div><div class="line">              video_refresh_timer(event.user.data1);</div><div class="line">           <span class="keyword">default</span>:</div><div class="line">              <span class="keyword">break</span>;</div><div class="line">        }</div><div class="line">     }</div></pre></td></tr></table></figure>
-
-
-
+	    <h2 id="我說在做的各位都是垃圾">我說在做的各位都是垃圾</h2>
 	  
 	</div>
 
@@ -133,16 +127,6 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2014/08/19/2014-08-19-YouCompleteMe/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
-
-        <li><a href="/archives/"><i class="fa fa-archive"></i>Archive</a></li>
-
-		
-          <li class="next disabled"><a>Next<i class="fa fa-arrow-circle-o-right"></i></a></li>
-        
-	
 </ul>
 </div>
 
@@ -151,52 +135,9 @@
 	
 	<!-- comment -->
 	
-<section id="comment">
-  <h2 class="title">Comments</h2>
-
-  
-</section>
-
 	
 	</div> <!-- col-md-9/col-md-12 -->
 	
-	
-		<div class="col-md-3"> 
-
-	<!-- date -->
-	
-	<div class="meta-widget">
-	<i class="fa fa-clock-o"></i>
-	Aug 18 2014 
-	</div>
-	
-
-	<!-- categories -->
-    
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
-          
-  <li>
-    <li><a href="/categories/測試/">測試<span>1</span></a></li>
-  </li>
-
-    </ul>
-	</div>
-	
-
-	<!-- tags -->
-		
-
-	<!-- toc -->
-	<div class="meta-widget">
-	
-	</div>
-	
-    <hr>
-	
-</div><!-- col-md-3 -->
-
 	
 
 </div><!-- row -->

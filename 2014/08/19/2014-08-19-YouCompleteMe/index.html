@@ -3,18 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vim補全神器 YouComplteMe | Hexo</title>
+  <title>vim補全神器 YouComplteMe | 皮卡之家</title>
   <meta name="author" content="簡皮卡">
   
-  <meta name="description" content="餓死抬頭,最近有一個Google工程師寫的Vim plugin需要vim支持python重新編譯 emerge一下就好clang也要裝好
-先下載plugin
-12cd .vimgit submodule add https://github.com/Valloric/YouCompleteMe.gi">
+  <meta name="description" content="簡皮卡的程式園地">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="vim補全神器 YouComplteMe"/>
-  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:site_name" content="皮卡之家"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -40,9 +38,26 @@
 </head>
 
  <body> 
-<div id="wrap">
-<header role="banner">
-  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+   <div class="main">
+  	<div class="content">
+    	 
+
+
+
+
+	
+		<div class="page-header">
+		<h1>簡皮卡的程式園地</h1>
+<div class="form-group has-success has-feedback">
+  <form action="getData" method="post" accept-charset="utf-8" >
+  <input type="text" name="name" class="form-control">
+  </form>
+</div>
+		</div>		
+  
+<nav class="navbar navbar-default" role="navigation">
+      
     <div class="container">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,51 +66,47 @@
          <span class="icon-bar"></span>
          </button>
       </div>
-	  <a class="navbar-brand" href="/">Hexo</a>
+	  <a class="navbar-brand" href="/">皮卡之家</a>
       <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 		  
 		  <li>
-			<a href="/archives" title="All the articles.">
+			<a href="/archives/" title="All the articles.">
 			  <i class="fa fa-archive"></i>Archives
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
+			<a href="/categories/" title="All the categories.">
 			  <i class="fa fa-folder"></i>Categories
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/tags" title="All the tags.">
+			<a href="/tags/" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/about" title="About me.">
+			<a href="/about/" title="About me.">
 			  <i class="fa fa-user"></i>About
 			</a>
 		  </li>
 		  
 		</ul>
       </div>
+
     </div> <!-- container -->
 </nav>
 <div class="clearfix"></div>
 
-</header>
-  <div class="container">
-  	<div class="content">
-    	 
-
 
 	
-		<div class="page-header">		
-			<h1> vim補全神器 YouComplteMe</h1>
-		</div>		
-	
+
+
+
+
 
 
 
@@ -117,6 +128,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">mkdir ycm_build</div><div class="line"><span class="built_in">cd</span> ycm_build</div><div class="line">cmake -G <span class="string">"Unix Makefiles"</span> -DUSE_SYSTEM_LIBclang=ON -DEXTERNAL_LIBCLANG_PATH=CLANG_INSTALL_PATH/libclang.so . ~/.vim/bundle/YouCompleteMe/cpp</div><div class="line">make ycm_core</div><div class="line">make ycm_support_libs</div></pre></td></tr></table></figure>
 
 <p><font color="black">CLANG_INSTALL_PATH是你libclang.so的路徑</font><br><br><br>接下來要設定.ycm_extra_conf.py 當你希望增加某個程式庫的資訊<br>就來這裡更改 -isystemi <br>設定header路徑 -std=c++11支持C++11<br><br>flag 是用來更改 compiler參數 自己參考<a href="http://clang.llvm.org/docs/UsersManual.html" target="_blank" rel="external">clang page</a>巴</p>
+<p><a id="more"></a></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">flags = [</div><div class="line"><span class="string">'-stdlib=c++11'</span>,</div><div class="line"><span class="string">'-lc++'</span>,</div><div class="line"><span class="string">'-lc++abi'</span>,</div><div class="line"><span class="string">'-isystem'</span>,</div><div class="line"><span class="string">'/usr/include/'</span>,</div><div class="line"><span class="string">'-isystem'</span>,</div><div class="line"><span class="string">'/usr/include/c++/v1'</span>,</div><div class="line"><span class="string">'-isystem'</span>,</div><div class="line"><span class="string">'/usr/include/i686-pc-linux-gnu'</span>,</div><div class="line"><span class="string">'-Wall'</span>,</div><div class="line"><span class="string">'-Wextra'</span>,</div><div class="line"><span class="comment">#'-Wc++98-compat',</span></div><div class="line"><span class="string">'-Wno-long-long'</span>,</div><div class="line"><span class="string">'-Wno-variadic-macros'</span>,</div><div class="line"><span class="string">'-fexceptions'</span>,</div><div class="line"><span class="string">'-DNDEBUG'</span>,</div><div class="line"><span class="comment"># You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM</span></div><div class="line"><span class="comment"># source code needs it.</span></div><div class="line"><span class="string">'-DUSE_CLANG_COMPLETER'</span>,</div><div class="line"><span class="comment"># THIS IS IMPORTANT! Without a "-std=&lt;something&gt;" flag, clang won't know which</span></div><div class="line"><span class="comment"># language to use when compiling headers. So it will guess. Badly. So C++</span></div><div class="line"><span class="comment"># headers will be compiled as C headers. You don't want that so ALWAYS specify</span></div><div class="line"><span class="comment"># a "-std=&lt;something&gt;".</span></div><div class="line"><span class="comment"># For a C project, you would set this to something like 'c99' instead of</span></div><div class="line"><span class="comment"># 'c++11'.</span></div><div class="line"><span class="string">'-std=c++11'</span></div><div class="line">]</div></pre></td></tr></table></figure>
 
 <p>另外要註解以下幾行 以免將-stdlib=libc++ flag拿掉</p>
@@ -166,7 +178,7 @@
 <span id="L41"><font color="#ffff00"><b>41&#xA0;</b></font></span>&#xA0;&#xA0;
 </font></pre></figure></p>
 <p><font color="black">Demo如下(錄得有點爛阿= =|||)</font><br></p>
-<p><img src="/images/ycm.gif" alt="ycm demo"></p>
+<p><img src="/img/ycm.gif" alt="ycm demo"></p>
 	  
 	</div>
 
@@ -179,7 +191,7 @@
     	<li class="prev"><a href="/2014/08/19/2014-08-19-llvm/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
   		
 
-        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+        <li><a href="/archives/"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
 		   <li class="next"><a href="/2014/08/18/2014-08-18-c++-test/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
@@ -244,8 +256,9 @@
 </div><!-- row -->
 
 	</div>
-  </div>
-  </div>
+
+  </div> <!-- main -->
+  </div> <!-- container -->
   <div class="container-narrow">
   <footer role="contentinfo"> <p>
   &copy; 2014 簡皮卡
@@ -263,7 +276,7 @@
 <script src="/js/gallery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="/js/tagcanvas.js"></script>
 
 
 

@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>llvm | Hexo</title>
+  <title>llvm | 皮卡之家</title>
   <meta name="author" content="簡皮卡">
+  
+  <meta name="description" content="簡皮卡的程式園地">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:site_name" content="皮卡之家"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -36,9 +38,21 @@
 </head>
 
  <body> 
-<div id="wrap">
-<header role="banner">
-  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+   <div class="main">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header">
+  
+  <h1> 簡皮卡的程式園地 </h1>
+  
+</div>
+
+  
+<nav class="navbar navbar-default" role="navigation">
+      
     <div class="container">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,49 +61,40 @@
          <span class="icon-bar"></span>
          </button>
       </div>
-	  <a class="navbar-brand" href="/">Hexo</a>
+	  <a class="navbar-brand" href="/">皮卡之家</a>
       <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 		  
 		  <li>
-			<a href="/archives" title="All the articles.">
+			<a href="/archives/" title="All the articles.">
 			  <i class="fa fa-archive"></i>Archives
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
+			<a href="/categories/" title="All the categories.">
 			  <i class="fa fa-folder"></i>Categories
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/tags" title="All the tags.">
+			<a href="/tags/" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/about" title="About me.">
+			<a href="/about/" title="About me.">
 			  <i class="fa fa-user"></i>About
 			</a>
 		  </li>
 		  
 		</ul>
       </div>
+
     </div> <!-- container -->
 </nav>
 <div class="clearfix"></div>
-
-</header>
-  <div class="container">
-  	<div class="content">
-    	 
-
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title-tag">llvm</h1>
-</div>
 
 <div class="row page">
   <!-- cols -->
@@ -102,6 +107,7 @@
 	  <div class="mypage">
 	  
 	  
+
 	
 	<!-- display as entry -->
 		<h3 class="title">
@@ -109,6 +115,10 @@
 			<span class="date"> Aug 19 2014 </span>
 		</h3>
 	
+
+
+
+
 
 
 	  <div class="entry">
@@ -120,28 +130,7 @@
 	  <p><font color="black">先下載原始碼安裝llvm+clang</font><br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mkdir llvm-clang</div><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm</div><div class="line"><span class="built_in">cd</span> llvm/tools</div><div class="line"><span class="built_in">cd</span> ../..</div><div class="line"><span class="built_in">cd</span> llvm/tools/clang/tools</div><div class="line">svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra</div><div class="line"><span class="built_in">cd</span> ../../../..</div><div class="line"><span class="built_in">cd</span> llvm/projects</div><div class="line">svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt</div><div class="line"><span class="built_in">cd</span> ..</div></pre></td></tr></table></figure>
 
-
-<p><font color="black">Build llvm against libgcc/libstdc++</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line">../llvm/configure --prefix=/ --enable-targets=host --disable-docs --enable-optimized</div><div class="line">make -j4 <span class="comment">#4cores</span></div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p><font color="black">安装clang libc++ library</font><br><br>因為clang 不使用GCC的libstdc++ 那沒很好支援C++11</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx</div><div class="line"><span class="built_in">cd</span> libcxx/lib</div><div class="line">./buildit</div><div class="line">cp -r ~/llvm-clang/libcxx/include/ /usr/include/c++/v1/</div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxx/lib/libc++.so.<span class="number">1.0</span> ~/llvm-clang/libcxx/lib/libc++.so.<span class="number">1</span></div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxx/lib/libc++.so.<span class="number">1.0</span> ~/llvm-clang/libcxx/lib/libc++.so</div><div class="line">cp ~/llvm-clang/libcxx/lib/libc++.so* /usr/lib64 <span class="comment">#64bit linux</span></div></pre></td></tr></table></figure>
-
-<p><font color="black">安装clang libc++abi</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi</div><div class="line"><span class="built_in">cd</span> libcxxabi/lib</div><div class="line">./buildit</div><div class="line">cp -r ~/llvm-clang/libcxxabi/include/ /usr/include/c++/v1/</div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so.<span class="number">1.0</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so.<span class="number">1</span></div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so.<span class="number">1.0</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so</div><div class="line">cp ~/llvm-clang/libcxxabi/lib/libc++abi.so* /usr/lib64 </div></pre></td></tr></table></figure>
-
-<p>這樣就安裝好了,不過這樣安裝是用到libstdc++<br><br>我們可以再利用clang 跟libc++在編譯出跟linux c++程式庫無關的llvm</p>
-<p><font color="black">Build libcxx against libcxxabi</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/;cxa_demangle.h//'</span> ../libcxx/CMakeLists.txt</div><div class="line">CC=<span class="string">"clang -fPIC"</span> CXX=<span class="string">"clang++ -fPIC"</span> cmake -G <span class="string">"Unix Makefiles"</span> -DLIBCXX_CXX_ABI=libcxxabi -DLIBCXX_LIBCXXABI_INCLUDE_PATHS=<span class="string">"../libcxxabi/include"</span> -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ ../libcxx</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p><font color="black">要讓clang使用libc++ patch一下原本的source code</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> llvm</div><div class="line">sed -i <span class="string">'/^  return ToolChain::CST_Libstdcxx/s@stdcxx@cxx@'</span> tools/clang/lib/Driver/ToolChain.cpp</div></pre></td></tr></table></figure>
-
-<p><font color="black">Build</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mkdir ../llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line">CC=clang CXX=<span class="string">"clang++ -stdlib=libc++"</span> ../llvm/configure --enable-targets=host </div><div class="line">--disable-docs --enable-optimized --enable-libcpp</div><div class="line">make -j4</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p>這樣就編譯好了,預設是裝在/usr/local下<br>你想改可以在configure裡增加—prefix參數</p>
-
+<p>
 	
 	</div>
 	
@@ -193,17 +182,60 @@
 
 		
 			
+            <script type="text/javascript">
+         $(document).ready(function() {
+TagCanvas.textColour = '#00f';
+ TagCanvas.textHeight = 25;
+ TagCanvas.outlineMethod = 'block';
+ TagCanvas.outlineColour = '#acf';
+ TagCanvas.maxSpeed = 0.03;
+ TagCanvas.minBrightness = 0.2;
+ TagCanvas.depth = 0.92;
+ TagCanvas.pulsateTo = 0.6;
+ TagCanvas.initial = [0.1,-0.1];
+ TagCanvas.decel = 0.98;
+ TagCanvas.reverse = true;
+ TagCanvas.hideTags = true;
+ TagCanvas.shadow = '#ccf';
+ TagCanvas.shadowBlur = 3;
+ TagCanvas.weight = true;
+ TagCanvas.imageScale = null;
+ TagCanvas.fadeIn = 1000;
+ TagCanvas.clickToFront = 600;
+ TagCanvas.weightFrom = 'data-weight';
+        try {
+          TagCanvas.Start('myCanvas','tags',{
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05
+          });
+        } catch(e) {
+          // something went wrong, hide the canvas container
+          document.getElementById('myCanvasContainer').style.display = 'none';
+        }
+      });
+    </script>
 	<div class="widget">
 		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
+    <div id="myCanvasContainer">
+          <canvas width="200" height="150" id="myCanvas">
+                  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+          </canvas>
+    </div>
+	     <div id="tags">
+	        
+		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/llvm/">llvm<span>1</span></a></li>
+			<li><a data-weight='25' href="/tags/clang/">clang</a></li>
 		
-			<li><a href="/tags/clang/">clang<span>1</span></a></li>
+			<li><a data-weight='25' href="/tags/llvm/">llvm</a></li>
 		
 		 
 		</ul>
-	</div>
+	     </div>
+     </div>
+
+    
 
 
 		
@@ -252,8 +284,9 @@
 
 
 	</div>
-  </div>
-  </div>
+
+  </div> <!-- main -->
+  </div> <!-- container -->
   <div class="container-narrow">
   <footer role="contentinfo"> <p>
   &copy; 2014 簡皮卡
@@ -271,7 +304,7 @@
 <script src="/js/gallery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="/js/tagcanvas.js"></script>
 
 
 

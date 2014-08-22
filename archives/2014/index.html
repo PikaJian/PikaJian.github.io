@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2014 | Hexo</title>
+  <title>Archives: 2014 | 皮卡之家</title>
   <meta name="author" content="簡皮卡">
+  
+  <meta name="description" content="簡皮卡的程式園地">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:site_name" content="皮卡之家"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -36,9 +38,21 @@
 </head>
 
  <body> 
-<div id="wrap">
-<header role="banner">
-  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+   <div class="main">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header">
+  
+  <h1> 簡皮卡的程式園地 </h1>
+  
+</div>
+
+  
+<nav class="navbar navbar-default" role="navigation">
+      
     <div class="container">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,49 +61,40 @@
          <span class="icon-bar"></span>
          </button>
       </div>
-	  <a class="navbar-brand" href="/">Hexo</a>
+	  <a class="navbar-brand" href="/">皮卡之家</a>
       <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 		  
 		  <li>
-			<a href="/archives" title="All the articles.">
+			<a href="/archives/" title="All the articles.">
 			  <i class="fa fa-archive"></i>Archives
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
+			<a href="/categories/" title="All the categories.">
 			  <i class="fa fa-folder"></i>Categories
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/tags" title="All the tags.">
+			<a href="/tags/" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/about" title="About me.">
+			<a href="/about/" title="About me.">
 			  <i class="fa fa-user"></i>About
 			</a>
 		  </li>
 		  
 		</ul>
       </div>
+
     </div> <!-- container -->
 </nav>
 <div class="clearfix"></div>
-
-</header>
-  <div class="container">
-  	<div class="content">
-    	 
-
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title">2014</h1>
-</div>
 
 <div class="row page">
   <!-- cols -->
@@ -102,6 +107,7 @@
 	  <div class="mypage">
 	  
 	  
+
 	
 	<!-- display as entry -->
 		<h3 class="title">
@@ -109,6 +115,10 @@
 			<span class="date"> Aug 19 2014 </span>
 		</h3>
 	
+
+
+
+
 
 
 	  <div class="entry">
@@ -120,28 +130,7 @@
 	  <p><font color="black">先下載原始碼安裝llvm+clang</font><br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">mkdir llvm-clang</div><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm</div><div class="line"><span class="built_in">cd</span> llvm/tools</div><div class="line"><span class="built_in">cd</span> ../..</div><div class="line"><span class="built_in">cd</span> llvm/tools/clang/tools</div><div class="line">svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra</div><div class="line"><span class="built_in">cd</span> ../../../..</div><div class="line"><span class="built_in">cd</span> llvm/projects</div><div class="line">svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt</div><div class="line"><span class="built_in">cd</span> ..</div></pre></td></tr></table></figure>
 
-
-<p><font color="black">Build llvm against libgcc/libstdc++</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line">../llvm/configure --prefix=/ --enable-targets=host --disable-docs --enable-optimized</div><div class="line">make -j4 <span class="comment">#4cores</span></div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p><font color="black">安装clang libc++ library</font><br><br>因為clang 不使用GCC的libstdc++ 那沒很好支援C++11</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx</div><div class="line"><span class="built_in">cd</span> libcxx/lib</div><div class="line">./buildit</div><div class="line">cp -r ~/llvm-clang/libcxx/include/ /usr/include/c++/v1/</div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxx/lib/libc++.so.<span class="number">1.0</span> ~/llvm-clang/libcxx/lib/libc++.so.<span class="number">1</span></div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxx/lib/libc++.so.<span class="number">1.0</span> ~/llvm-clang/libcxx/lib/libc++.so</div><div class="line">cp ~/llvm-clang/libcxx/lib/libc++.so* /usr/lib64 <span class="comment">#64bit linux</span></div></pre></td></tr></table></figure>
-
-<p><font color="black">安装clang libc++abi</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/llvm-clang</div><div class="line">svn co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi</div><div class="line"><span class="built_in">cd</span> libcxxabi/lib</div><div class="line">./buildit</div><div class="line">cp -r ~/llvm-clang/libcxxabi/include/ /usr/include/c++/v1/</div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so.<span class="number">1.0</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so.<span class="number">1</span></div><div class="line">ln <span class="operator">-s</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so.<span class="number">1.0</span> ~/llvm-clang/libcxxabi/lib/libc++abi.so</div><div class="line">cp ~/llvm-clang/libcxxabi/lib/libc++abi.so* /usr/lib64 </div></pre></td></tr></table></figure>
-
-<p>這樣就安裝好了,不過這樣安裝是用到libstdc++<br><br>我們可以再利用clang 跟libc++在編譯出跟linux c++程式庫無關的llvm</p>
-<p><font color="black">Build libcxx against libcxxabi</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/;cxa_demangle.h//'</span> ../libcxx/CMakeLists.txt</div><div class="line">CC=<span class="string">"clang -fPIC"</span> CXX=<span class="string">"clang++ -fPIC"</span> cmake -G <span class="string">"Unix Makefiles"</span> -DLIBCXX_CXX_ABI=libcxxabi -DLIBCXX_LIBCXXABI_INCLUDE_PATHS=<span class="string">"../libcxxabi/include"</span> -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/ ../libcxx</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p><font color="black">要讓clang使用libc++ patch一下原本的source code</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> llvm</div><div class="line">sed -i <span class="string">'/^  return ToolChain::CST_Libstdcxx/s@stdcxx@cxx@'</span> tools/clang/lib/Driver/ToolChain.cpp</div></pre></td></tr></table></figure>
-
-<p><font color="black">Build</font><br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mkdir ../llvm-build</div><div class="line"><span class="built_in">cd</span> ../llvm-build</div><div class="line">CC=clang CXX=<span class="string">"clang++ -stdlib=libc++"</span> ../llvm/configure --enable-targets=host </div><div class="line">--disable-docs --enable-optimized --enable-libcpp</div><div class="line">make -j4</div><div class="line">make install</div></pre></td></tr></table></figure>
-
-<p>這樣就編譯好了,預設是裝在/usr/local下<br>你想改可以在configure裡增加—prefix參數</p>
-
+<p>
 	
 	</div>
 	
@@ -152,6 +141,7 @@
 	  
 	  
 	  
+
 	
 	<!-- display as entry -->
 		<h3 class="title">
@@ -159,6 +149,10 @@
 			<span class="date"> Aug 19 2014 </span>
 		</h3>
 	
+
+
+
+
 
 
 	  <div class="entry">
@@ -175,57 +169,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line">mkdir ycm_build</div><div class="line"><span class="built_in">cd</span> ycm_build</div><div class="line">cmake -G <span class="string">"Unix Makefiles"</span> -DUSE_SYSTEM_LIBclang=ON -DEXTERNAL_LIBCLANG_PATH=CLANG_INSTALL_PATH/libclang.so . ~/.vim/bundle/YouCompleteMe/cpp</div><div class="line">make ycm_core</div><div class="line">make ycm_support_libs</div></pre></td></tr></table></figure>
 
 <p><font color="black">CLANG_INSTALL_PATH是你libclang.so的路徑</font><br><br><br>接下來要設定.ycm_extra_conf.py 當你希望增加某個程式庫的資訊<br>就來這裡更改 -isystemi <br>設定header路徑 -std=c++11支持C++11<br><br>flag 是用來更改 compiler參數 自己參考<a href="http://clang.llvm.org/docs/UsersManual.html" target="_blank" rel="external">clang page</a>巴</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">flags = [</div><div class="line"><span class="string">'-stdlib=c++11'</span>,</div><div class="line"><span class="string">'-lc++'</span>,</div><div class="line"><span class="string">'-lc++abi'</span>,</div><div class="line"><span class="string">'-isystem'</span>,</div><div class="line"><span class="string">'/usr/include/'</span>,</div><div class="line"><span class="string">'-isystem'</span>,</div><div class="line"><span class="string">'/usr/include/c++/v1'</span>,</div><div class="line"><span class="string">'-isystem'</span>,</div><div class="line"><span class="string">'/usr/include/i686-pc-linux-gnu'</span>,</div><div class="line"><span class="string">'-Wall'</span>,</div><div class="line"><span class="string">'-Wextra'</span>,</div><div class="line"><span class="comment">#'-Wc++98-compat',</span></div><div class="line"><span class="string">'-Wno-long-long'</span>,</div><div class="line"><span class="string">'-Wno-variadic-macros'</span>,</div><div class="line"><span class="string">'-fexceptions'</span>,</div><div class="line"><span class="string">'-DNDEBUG'</span>,</div><div class="line"><span class="comment"># You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM</span></div><div class="line"><span class="comment"># source code needs it.</span></div><div class="line"><span class="string">'-DUSE_CLANG_COMPLETER'</span>,</div><div class="line"><span class="comment"># THIS IS IMPORTANT! Without a "-std=&lt;something&gt;" flag, clang won't know which</span></div><div class="line"><span class="comment"># language to use when compiling headers. So it will guess. Badly. So C++</span></div><div class="line"><span class="comment"># headers will be compiled as C headers. You don't want that so ALWAYS specify</span></div><div class="line"><span class="comment"># a "-std=&lt;something&gt;".</span></div><div class="line"><span class="comment"># For a C project, you would set this to something like 'c99' instead of</span></div><div class="line"><span class="comment"># 'c++11'.</span></div><div class="line"><span class="string">'-std=c++11'</span></div><div class="line">]</div></pre></td></tr></table></figure>
-
-<p>另外要註解以下幾行 以免將-stdlib=libc++ flag拿掉</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">FlagsForFile</span><span class="params">( filename, **kwargs )</span>:</span></div><div class="line">  <span class="keyword">if</span> database:</div><div class="line">    <span class="comment"># Bear in mind that compilation_info.compiler_flags_ does NOT return a</span></div><div class="line">    <span class="comment"># python list, but a "list-like" StringVec object</span></div><div class="line">    compilation_info = GetCompilationInfoForFile( filename )</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> compilation_info:</div><div class="line">      <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line"></div><div class="line">    final_flags = MakeRelativePathsInFlagsAbsolute(</div><div class="line">      compilation_info.compiler_flags_,</div><div class="line">      compilation_info.compiler_working_dir_ )</div><div class="line"></div><div class="line">    <span class="comment"># NOTE: This is just for YouCompleteMe; it's highly likely that your project</span></div><div class="line">    <span class="comment"># does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR</span></div><div class="line">    <span class="comment"># ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.</span></div><div class="line">    <span class="comment">#try:</span></div><div class="line">    <span class="comment">#  final_flags.remove( '-stdlib=libc++' )</span></div><div class="line">    <span class="comment">#except ValueError:</span></div><div class="line">    <span class="comment">#  pass</span></div><div class="line">  <span class="keyword">else</span>:</div><div class="line">    relative_to = DirectoryOfThisScript()</div><div class="line">    final_flags = MakeRelativePathsInFlagsAbsolute( flags, relative_to )</div><div class="line"></div><div class="line">  <span class="keyword">return</span> {</div><div class="line">    <span class="string">'flags'</span>: final_flags,</div><div class="line">    <span class="string">'do_cache'</span>: <span class="keyword">True</span></div><div class="line">  }</div></pre></td></tr></table></figure>
-
-<p><font color="black"> 在vimrc加入下面設定 <font><br></font></font></p>
-<p><figure class="highlight"><pre><font face="monospace"><span id="L1"><font color="#ffff00"><b>&#xA0;1&#xA0;</b></font></span><font color="#00ffff"><b>&quot;CPP Complete</b></font>
-<span id="L2"><font color="#ffff00"><b>&#xA0;2&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_global_ycm_extra_conf</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>&apos;~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py&apos;</b></font>
-<span id="L3"><font color="#ffff00"><b>&#xA0;3&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>set</b></font>&#xA0;<font color="#8080ff"><b>completeopt</b></font>=longest<font color="#ffff00"><b>,</b></font>menu
-<span id="L4"><font color="#ffff00"><b>&#xA0;4&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>autocmd</b></font>&#xA0;<font color="#00ff00"><b>InsertLeave</b></font>&#xA0;*&#xA0;<font color="#ffff00"><b>if</b></font>&#xA0;<font color="#00ffff"><b>pumvisible</b></font><font color="#ff6060"><b>()</b></font>&#xA0;<font color="#ffff00"><b>==</b></font>&#xA0;<font color="#ff40ff"><b>0</b></font>|<font color="#ffff00"><b>pclose</b></font>|<font color="#ffff00"><b>endif</b></font>
-<span id="L5"><font color="#ffff00"><b>&#xA0;5&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>inoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>expr</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>CR</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; pumvisible() ? &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>C-y</b></font><font color="#ff6060"><b>&gt;</b></font>&quot; : &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>CR</b></font><font color="#ff6060"><b>&gt;</b></font>&quot;
-<span id="L6"><font color="#ffff00"><b>&#xA0;6&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>inoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>expr</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>Down</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;&#xA0;&#xA0;&#xA0; pumvisible() ? &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>C-n</b></font><font color="#ff6060"><b>&gt;</b></font>&quot; : &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>Down</b></font><font color="#ff6060"><b>&gt;</b></font>&quot;
-<span id="L7"><font color="#ffff00"><b>&#xA0;7&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>inoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>expr</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>Up</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; pumvisible() ? &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>C-p</b></font><font color="#ff6060"><b>&gt;</b></font>&quot; : &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>Up</b></font><font color="#ff6060"><b>&gt;</b></font>&quot;
-<span id="L8"><font color="#ffff00"><b>&#xA0;8&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>inoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>expr</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>PageDown</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;pumvisible() ? &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>PageDown</b></font><font color="#ff6060"><b>&gt;\&lt;</b></font><font color="#ff6060"><b>C-p</b></font><font color="#ff6060"><b>&gt;\&lt;</b></font><font color="#ff6060"><b>C-n</b></font><font color="#ff6060"><b>&gt;</b></font>&quot; : &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>PageDown</b></font><font color="#ff6060"><b>&gt;</b></font>&quot;
-<span id="L9"><font color="#ffff00"><b>&#xA0;9&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>inoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>expr</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>PageUp</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;&#xA0; pumvisible() ? &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>PageUp</b></font><font color="#ff6060"><b>&gt;\&lt;</b></font><font color="#ff6060"><b>C-p</b></font><font color="#ff6060"><b>&gt;\&lt;</b></font><font color="#ff6060"><b>C-n</b></font><font color="#ff6060"><b>&gt;</b></font>&quot; : &quot;<font color="#ff6060"><b>\&lt;</b></font><font color="#ff6060"><b>PageUp</b></font><font color="#ff6060"><b>&gt;</b></font>&quot;
-<span id="L10"><font color="#ffff00"><b>10&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;youcompleteme</b></font>
-<span id="L11"><font color="#ffff00"><b>11&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;YCM diagnostic</b></font>
-<span id="L12"><font color="#ffff00"><b>12&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_register_as_syntastic_checker</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>&#xA0;<font color="#00ffff"><b>&quot;default 1</b></font>
-<span id="L13"><font color="#ffff00"><b>13&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:Show_diagnostics_ui</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>&#xA0;<font color="#00ffff"><b>&quot;default 1</b></font>
-<span id="L14"><font color="#ffff00"><b>14&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_enable_diagnostic_signs</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>
-<span id="L15"><font color="#ffff00"><b>15&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_enable_diagnostic_highlighting</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>0</b></font>
-<span id="L16"><font color="#ffff00"><b>16&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_always_populate_location_list</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>&#xA0;<font color="#00ffff"><b>&quot;default 0</b></font>
-<span id="L17"><font color="#ffff00"><b>17&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_open_loclist_on_ycm_diags</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>&#xA0;<font color="#00ffff"><b>&quot;default 1</b></font>
-<span id="L18"><font color="#ffff00"><b>18&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;YCM others options</b></font>
-<span id="L19"><font color="#ffff00"><b>19&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_show_diagnostics_ui</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>
-<span id="L20"><font color="#ffff00"><b>20&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_key_invoke_completion</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>&apos;&lt;F8&gt;&apos;</b></font>
-<span id="L21"><font color="#ffff00"><b>21&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;let g:ycm_key_list_select_completion=[&apos;&lt;c-n&gt;&apos;]</b></font>
-<span id="L22"><font color="#ffff00"><b>22&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_key_list_select_completion</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;[<font color="#ff40ff"><b>&apos;&lt;Down&gt;&apos;</b></font>]
-<span id="L23"><font color="#ffff00"><b>23&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;let g:ycm_key_list_previous_completion=[&apos;&lt;c-p&gt;&apos;]</b></font>
-<span id="L24"><font color="#ffff00"><b>24&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_key_list_previous_completion</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;[<font color="#ff40ff"><b>&apos;&lt;Up&gt;&apos;</b></font>]
-<span id="L25"><font color="#ffff00"><b>25&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_confirm_extra_conf</b></font><font color="#ffff00"><b>=</b></font><font color="#ff40ff"><b>0</b></font>
-<span id="L26"><font color="#ffff00"><b>26&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_collect_identifiers_from_tags_files</b></font><font color="#ffff00"><b>=</b></font><font color="#ff40ff"><b>1</b></font>
-<span id="L27"><font color="#ffff00"><b>27&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_min_num_of_chars_for_completion</b></font><font color="#ffff00"><b>=</b></font><font color="#ff40ff"><b>2</b></font>
-<span id="L28"><font color="#ffff00"><b>28&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_cache_omnifunc</b></font><font color="#ffff00"><b>=</b></font><font color="#ff40ff"><b>0</b></font>
-<span id="L29"><font color="#ffff00"><b>29&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_seed_identifiers_with_syntax</b></font><font color="#ffff00"><b>=</b></font><font color="#ff40ff"><b>1</b></font>
-<span id="L30"><font color="#ffff00"><b>30&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;nnoremap &lt;leader&gt;lo :lopen&lt;CR&gt; &quot;open locationlist</b></font>
-<span id="L31"><font color="#ffff00"><b>31&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;nnoremap &lt;leader&gt;lc :lclose&lt;CR&gt;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&quot;close locationlist</b></font>
-<span id="L32"><font color="#ffff00"><b>32&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>inoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>leader</b></font><font color="#ff6060"><b>&gt;&lt;</b></font><font color="#ff6060"><b>leader</b></font><font color="#ff6060"><b>&gt;</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>C-x</b></font><font color="#ff6060"><b>&gt;&lt;</b></font><font color="#ff6060"><b>C-o</b></font><font color="#ff6060"><b>&gt;</b></font>
-<span id="L33"><font color="#ffff00"><b>33&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_complete_in_comments</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>
-<span id="L34"><font color="#ffff00"><b>34&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_complete_in_strings</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>1</b></font>
-<span id="L35"><font color="#ffff00"><b>35&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>let</b></font>&#xA0;<font color="#00ffff"><b>g:ycm_collect_identifiers_from_comments_and_strings</b></font>&#xA0;<font color="#ffff00"><b>=</b></font>&#xA0;<font color="#ff40ff"><b>0</b></font>
-<span id="L36"><font color="#ffff00"><b>36&#xA0;</b></font></span>
-<span id="L37"><font color="#ffff00"><b>37&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;Check if the file is compilable</b></font>
-<span id="L38"><font color="#ffff00"><b>38&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>nnoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>leader</b></font><font color="#ff6060"><b>&gt;</b></font>y&#xA0;:YcmForceCompileAndDiagnostics
-<span id="L39"><font color="#ffff00"><b>39&#xA0;</b></font></span><font color="#00ffff"><b>&#xA0;&#xA0;&quot;Jump to Definition</b></font>
-<span id="L40"><font color="#ffff00"><b>40&#xA0;</b></font></span>&#xA0;&#xA0;<font color="#ffff00"><b>nnoremap</b></font>&#xA0;<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>leader</b></font><font color="#ff6060"><b>&gt;</b></font>jd&#xA0;:YcmCompleter GoToDefinitionElseDeclaration<font color="#ff6060"><b>&lt;</b></font><font color="#ff6060"><b>CR</b></font><font color="#ff6060"><b>&gt;</b></font>
-<span id="L41"><font color="#ffff00"><b>41&#xA0;</b></font></span>&#xA0;&#xA0;
-</font></pre></figure></p>
-<p><font color="black">Demo如下(錄得有點爛阿= =|||)</font><br></p>
-<p><img src="/images/ycm.gif" alt="ycm demo"></p>
-
+<p>
 	
 	</div>
 	
@@ -236,6 +180,7 @@
 	  
 	  
 	  
+
 	
 	<!-- display as entry -->
 		<h3 class="title">
@@ -243,6 +188,10 @@
 			<span class="date"> Aug 18 2014 </span>
 		</h3>
 	
+
+
+
+
 
 
 	  <div class="entry">
@@ -308,17 +257,60 @@
 
 		
 			
+            <script type="text/javascript">
+         $(document).ready(function() {
+TagCanvas.textColour = '#00f';
+ TagCanvas.textHeight = 25;
+ TagCanvas.outlineMethod = 'block';
+ TagCanvas.outlineColour = '#acf';
+ TagCanvas.maxSpeed = 0.03;
+ TagCanvas.minBrightness = 0.2;
+ TagCanvas.depth = 0.92;
+ TagCanvas.pulsateTo = 0.6;
+ TagCanvas.initial = [0.1,-0.1];
+ TagCanvas.decel = 0.98;
+ TagCanvas.reverse = true;
+ TagCanvas.hideTags = true;
+ TagCanvas.shadow = '#ccf';
+ TagCanvas.shadowBlur = 3;
+ TagCanvas.weight = true;
+ TagCanvas.imageScale = null;
+ TagCanvas.fadeIn = 1000;
+ TagCanvas.clickToFront = 600;
+ TagCanvas.weightFrom = 'data-weight';
+        try {
+          TagCanvas.Start('myCanvas','tags',{
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05
+          });
+        } catch(e) {
+          // something went wrong, hide the canvas container
+          document.getElementById('myCanvasContainer').style.display = 'none';
+        }
+      });
+    </script>
 	<div class="widget">
 		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
+    <div id="myCanvasContainer">
+          <canvas width="200" height="150" id="myCanvas">
+                  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+          </canvas>
+    </div>
+	     <div id="tags">
+	        
+		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/llvm/">llvm<span>1</span></a></li>
+			<li><a data-weight='25' href="/tags/clang/">clang</a></li>
 		
-			<li><a href="/tags/clang/">clang<span>1</span></a></li>
+			<li><a data-weight='25' href="/tags/llvm/">llvm</a></li>
 		
 		 
 		</ul>
-	</div>
+	     </div>
+     </div>
+
+    
 
 
 		
@@ -366,8 +358,9 @@
 
 
 	</div>
-  </div>
-  </div>
+
+  </div> <!-- main -->
+  </div> <!-- container -->
   <div class="container-narrow">
   <footer role="contentinfo"> <p>
   &copy; 2014 簡皮卡
@@ -385,7 +378,7 @@
 <script src="/js/gallery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="/js/tagcanvas.js"></script>
 
 
 

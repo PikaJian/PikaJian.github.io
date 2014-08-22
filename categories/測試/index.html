@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>測試 | Hexo</title>
+  <title>測試 | 皮卡之家</title>
   <meta name="author" content="簡皮卡">
+  
+  <meta name="description" content="簡皮卡的程式園地">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:site_name" content="皮卡之家"/>
 
   
     <meta property="og:image" content="undefined"/>
@@ -36,9 +38,21 @@
 </head>
 
  <body> 
-<div id="wrap">
-<header role="banner">
-  <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+   <div class="main">
+  	<div class="content">
+    	 
+
+<!-- title -->
+<div class="page-header">
+  
+  <h1> 簡皮卡的程式園地 </h1>
+  
+</div>
+
+  
+<nav class="navbar navbar-default" role="navigation">
+      
     <div class="container">
       <div class="navbar-header">
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,49 +61,40 @@
          <span class="icon-bar"></span>
          </button>
       </div>
-	  <a class="navbar-brand" href="/">Hexo</a>
+	  <a class="navbar-brand" href="/">皮卡之家</a>
       <div class="navbar-collapse collapse">
 		<ul class="nav navbar-nav">
 		  
 		  <li>
-			<a href="/archives" title="All the articles.">
+			<a href="/archives/" title="All the articles.">
 			  <i class="fa fa-archive"></i>Archives
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/categories" title="All the categories.">
+			<a href="/categories/" title="All the categories.">
 			  <i class="fa fa-folder"></i>Categories
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/tags" title="All the tags.">
+			<a href="/tags/" title="All the tags.">
 			  <i class="fa fa-tags"></i>Tags
 			</a>
 		  </li>
 		  
 		  <li>
-			<a href="/about" title="About me.">
+			<a href="/about/" title="About me.">
 			  <i class="fa fa-user"></i>About
 			</a>
 		  </li>
 		  
 		</ul>
       </div>
+
     </div> <!-- container -->
 </nav>
 <div class="clearfix"></div>
-
-</header>
-  <div class="container">
-  	<div class="content">
-    	 
-
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title-category">測試</h1>
-</div>
 
 <div class="row page">
   <!-- cols -->
@@ -102,6 +107,7 @@
 	  <div class="mypage">
 	  
 	  
+
 	
 	<!-- display as entry -->
 		<h3 class="title">
@@ -109,6 +115,10 @@
 			<span class="date"> Aug 18 2014 </span>
 		</h3>
 	
+
+
+
+
 
 
 	  <div class="entry">
@@ -174,17 +184,60 @@
 
 		
 			
+            <script type="text/javascript">
+         $(document).ready(function() {
+TagCanvas.textColour = '#00f';
+ TagCanvas.textHeight = 25;
+ TagCanvas.outlineMethod = 'block';
+ TagCanvas.outlineColour = '#acf';
+ TagCanvas.maxSpeed = 0.03;
+ TagCanvas.minBrightness = 0.2;
+ TagCanvas.depth = 0.92;
+ TagCanvas.pulsateTo = 0.6;
+ TagCanvas.initial = [0.1,-0.1];
+ TagCanvas.decel = 0.98;
+ TagCanvas.reverse = true;
+ TagCanvas.hideTags = true;
+ TagCanvas.shadow = '#ccf';
+ TagCanvas.shadowBlur = 3;
+ TagCanvas.weight = true;
+ TagCanvas.imageScale = null;
+ TagCanvas.fadeIn = 1000;
+ TagCanvas.clickToFront = 600;
+ TagCanvas.weightFrom = 'data-weight';
+        try {
+          TagCanvas.Start('myCanvas','tags',{
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05
+          });
+        } catch(e) {
+          // something went wrong, hide the canvas container
+          document.getElementById('myCanvasContainer').style.display = 'none';
+        }
+      });
+    </script>
 	<div class="widget">
 		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
+    <div id="myCanvasContainer">
+          <canvas width="200" height="150" id="myCanvas">
+                  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+          </canvas>
+    </div>
+	     <div id="tags">
+	        
+		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/tags/llvm/">llvm<span>1</span></a></li>
+			<li><a data-weight='25' href="/tags/clang/">clang</a></li>
 		
-			<li><a href="/tags/clang/">clang<span>1</span></a></li>
+			<li><a data-weight='25' href="/tags/llvm/">llvm</a></li>
 		
 		 
 		</ul>
-	</div>
+	     </div>
+     </div>
+
+    
 
 
 		
@@ -232,8 +285,9 @@
 
 
 	</div>
-  </div>
-  </div>
+
+  </div> <!-- main -->
+  </div> <!-- container -->
   <div class="container-narrow">
   <footer role="contentinfo"> <p>
   &copy; 2014 簡皮卡
@@ -251,7 +305,7 @@
 <script src="/js/gallery.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
-
+<script src="/js/tagcanvas.js"></script>
 
 
 
